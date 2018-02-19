@@ -1,0 +1,15 @@
+.NoteFooter{
+    display: flex;
+    justify-content: space-between;
+
+}
+.Characters{
+    font-size: 11px;
+    padding-top: 20px;
+}
+.Save{
+    margin-top: 15px;
+    font-size: 13px;
+    border: none;
+    padding-bottom:0;
+}

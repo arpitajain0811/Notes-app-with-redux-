@@ -1,0 +1,8 @@
+.Body{
+    flex-grow: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #E9E9EF;
+}

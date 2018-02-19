@@ -1,0 +1,9 @@
+.Board{
+    border: 1px solid gray;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

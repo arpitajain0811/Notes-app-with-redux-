@@ -1,0 +1,8 @@
+.SavedNotesBody{
+    flex-grow: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    top:0;
+    background-color: #E9E9EF;
+}

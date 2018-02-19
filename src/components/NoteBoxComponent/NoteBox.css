@@ -1,0 +1,18 @@
+.Notebox{
+    display: flex;
+    flex-direction: column;
+    background-color: #E9E9EF;
+    padding-top: 5px;
+}
+.NoteHeading{
+    font-weight: bold;
+    padding: 10px;
+    padding-left:0;
+}
+.NoteContent{
+    background-color: white; 
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 12px;
+    word-wrap: break-word;
+}

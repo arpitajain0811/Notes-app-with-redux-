@@ -1,0 +1,28 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { saveNote } from '../../redux/actions';
+import './NotesFooter.css';
+
+function NotesFooter(props) {
+  return (
+    <div className="NoteFooter">
+      <button className="Save" onClick={() => { props.saveNote(); }}><b>Save</b></button>
+      <span className="Characters">{props.characters} characters</span>
+    </div>
+  );
+}
+const mapDispatchToProps = dispatch => ({
+  saveNote: () => {
+    dispatch(saveNote());
+  },
+});
+
+const mapStateToProps = state => ({
+  characters: state.characters,
+});
+export default connect(mapStateToProps, mapDispatchToProps)(NotesFooter);
+NotesFooter.propTypes = {
+  characters: PropTypes.number.isRequired,
+  saveNote: PropTypes.func.isRequired,
+};
