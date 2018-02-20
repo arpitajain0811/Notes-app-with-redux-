@@ -20,17 +20,17 @@ const reducer = (state = defaultState, action) => {
         page: false,
       };
     }
-    case 'putNote':{
-      fetch('/notes', {
-        body: JSON.stringify(state.savedNotes), 
-        headers: {
-          'content-type': 'application/json'
-        },
-        method: 'PUT', 
-      }).then((response)=>{response.json()
-        .then((response)=>{console.log(response.message)})});
-      break;
-    }
+    // case 'putNote':{
+    //   fetch('/notes', {
+    //     body: JSON.stringify(state.savedNotes), 
+    //     headers: {
+    //       'content-type': 'application/json'
+    //     },
+    //     method: 'PUT', 
+    //   }).then((response)=>{response.json()
+    //     .then((response)=>{console.log(response.message)})});
+    //   break;
+    // }
     case 'getNote':{
       return{
         ...state,
