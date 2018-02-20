@@ -6,9 +6,19 @@ import Footer from '../FooterComponent/Footer';
 import Body from '../BodyComponent/Body';
 import FooterButton from '../FooterComponent/FooterButton';
 import SavedNotes from '../SavedNotesComponent/SavedNotes';
+import { getNote } from '../../redux/actions';
 import './App.css';
 
 class App extends React.Component {
+  componentDidMount(){
+    
+    fetch('/notes').then((response)=>{
+     return response.json();
+    }).then((responseArray)=>{
+        this.props.getNotes(responseArray);
+        // console.log(responseArray);
+    });
+  }
   render() {
     if (!this.props.page) {
       return (
@@ -30,11 +40,18 @@ class App extends React.Component {
     );
   }
 }
+const mapDispatchToProps = dispatch => ({
+  getNotes: (responseArray) => {
+    // console.log(responseArray);
+    dispatch(getNote(responseArray));
+  },
+});
 const mapStateToProps = state => ({
   page: state.page,
 });
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 App.propTypes = {
-  page: PropTypes.string.isRequired,
+  page: PropTypes.bool.isRequired,
+  getNote: PropTypes.func.isRequired,
 };
 

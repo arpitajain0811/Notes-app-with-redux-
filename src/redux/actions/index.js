@@ -22,3 +22,12 @@ export const editNote = noteId => ({
     noteId,
   },
 });
+export const getNote = notesArray => ({
+  type: 'getNote',
+  payload: {
+    notesArray,
+  },
+});
+export const putNote = () => ({
+  type: 'putNote',
+});

@@ -20,16 +20,32 @@ const reducer = (state = defaultState, action) => {
         page: false,
       };
     }
-
+    case 'putNote':{
+      fetch('/notes', {
+        body: JSON.stringify(state.savedNotes), 
+        headers: {
+          'content-type': 'application/json'
+        },
+        method: 'PUT', 
+      }).then((response)=>{response.json()
+        .then((response)=>{console.log(response.message)})});
+      break;
+    }
+    case 'getNote':{
+      return{
+        ...state,
+        savedNotes:state.savedNotes.concat(action.payload.notesArray.slice()),
+      }
+    }
     case 'editNote': {
       const savedNotesArray = state.savedNotes.slice();
       for (let i = 0; i < savedNotesArray.length; i += 1) {
-        if (savedNotesArray[i].id === action.payload.noteId) {
+        if (savedNotesArray[i].noteId === action.payload.noteId) {
           return {
             ...state,
-            noteTitle: savedNotesArray[i].title,
-            noteBody: savedNotesArray[i].body,
-            characters: charLimit - savedNotesArray[i].body.length,
+            noteTitle: savedNotesArray[i].noteTitle,
+            noteBody: savedNotesArray[i].noteBody,
+            characters: charLimit - savedNotesArray[i].noteBody.length,
             page: false,
             edit: true,
             id: action.payload.noteId,
@@ -64,7 +80,7 @@ const reducer = (state = defaultState, action) => {
     case 'saveNote': {
       if (!state.edit) {
         if (state.noteTitle && state.noteBody) {
-          const note = { id: Date.now(), title: state.noteTitle, body: state.noteBody };
+          const note = { noteId: Date.now(), noteTitle: state.noteTitle, noteBody: state.noteBody };
           const prevNotes = state.savedNotes.slice();
           prevNotes.push(note);
           // state.saveNewNote(prevNotes);
@@ -81,9 +97,9 @@ const reducer = (state = defaultState, action) => {
         const noteId = state.id;
         const savedNotesArray = state.savedNotes.slice();
         for (let i = 0; i < savedNotesArray.length; i += 1) {
-          if (savedNotesArray[i].id === noteId) {
-            savedNotesArray[i].title = state.noteTitle;
-            savedNotesArray[i].body = state.noteBody;
+          if (savedNotesArray[i].noteId === noteId) {
+            savedNotesArray[i].noteTitle = state.noteTitle;
+            savedNotesArray[i].noteBody = state.noteBody;
             // this.props.saveEdited(savedNotesArray.slice());
             return {
               ...state,

@@ -8,9 +8,9 @@ const SavedNotes = (props) => {
   const noteHolder = [];
   for (let i = 0; i < props.notesArray.length; i += 1) {
     noteHolder.push((<NoteBox
-      id={props.notesArray[i].id}
-      title={props.notesArray[i].title}
-      content={props.notesArray[i].body}
+      id={props.notesArray[i].noteId}
+      title={props.notesArray[i].noteTitle}
+      content={props.notesArray[i].noteBody}
     />
     ));
   }
