@@ -14,14 +14,12 @@ const putsNote=(savedNotes)=>{
     .then((response)=>{console.log(response.message)})});
 }
 const Footer = props => (
-  <div className="Footer">
+  <div className="FooterButtons">
   
-  <button
-    onClick={() => props.changeState()}
-  >
+  <button class="Button" onClick={() => props.changeState()}>
     {props.text}
   </button>
-  <button onClick={()=>putsNote(props.savedNotes)}>Sync</button>
+  <button class="Button" onClick={()=>putsNote(props.savedNotes)}>Sync</button>
   </div>
 );
 const mapDispatchToProps = dispatch => ({
