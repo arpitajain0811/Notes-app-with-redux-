@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { saveNote } from '../../redux/actions';
@@ -7,7 +8,11 @@ import './NotesFooter.css';
 function NotesFooter(props) {
   return (
     <div className="NoteFooter">
-      <button className="Save" onClick={() => { props.saveNote(); }}><b>Save</b></button>
+      <button className="Save" onClick={() => { props.saveNote(); }}>
+        <Link className="Save" to="/saved">
+          <b>Save</b>
+        </Link>
+      </button>
       <span className="Characters">{props.characters} characters</span>
     </div>
   );

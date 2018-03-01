@@ -22,20 +22,20 @@ const reducer = (state = defaultState, action) => {
     }
     // case 'putNote':{
     //   fetch('/notes', {
-    //     body: JSON.stringify(state.savedNotes), 
+    //     body: JSON.stringify(state.savedNotes),
     //     headers: {
     //       'content-type': 'application/json'
     //     },
-    //     method: 'PUT', 
+    //     method: 'PUT',
     //   }).then((response)=>{response.json()
     //     .then((response)=>{console.log(response.message)})});
     //   break;
     // }
-    case 'getNote':{
-      return{
+    case 'getNote': {
+      return {
         ...state,
-        savedNotes:state.savedNotes.concat(action.payload.notesArray.slice()),
-      }
+        savedNotes: state.savedNotes.concat(action.payload.notesArray.slice()),
+      };
     }
     case 'editNote': {
       const savedNotesArray = state.savedNotes.slice();

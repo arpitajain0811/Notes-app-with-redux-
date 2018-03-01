@@ -16,3 +16,7 @@
     font-size: 12px;
     word-wrap: break-word;
 }
+.NoteLink{
+    text-decoration: none;
+    color: black;
+}
